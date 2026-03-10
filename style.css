@@ -1,0 +1,118 @@
+:root{
+  --bg-1: linear-gradient(120deg,#ffe6f0 0%, #fff0f6 40%, #fffaf0 100%);
+  --accent: #e75480;
+  --accent-2: #ffb3c7;
+  --gold: #f5c06a;
+  --glass: rgba(255,255,255,0.12);
+  --glass-strong: rgba(255,255,255,0.18);
+  --text: #1b1320;
+  --muted: #6b5a6f;
+  --max-width: 1200px;
+  --radius: 16px;
+  --glass-blur: 10px;
+  --card-pad: 1.25rem;
+  --scene-gap: 120px;
+}
+
+/* Basic reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background: radial-gradient(ellipse at top left, #100a14 0%, #0b0710 60%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  line-height:1.35;
+}
+
+/* Utility */
+.container{max-width:var(--max-width);margin:0 auto;padding:3rem 2rem}
+.scene{padding:6rem 0;position:relative}
+.full-bleed{min-height:80vh;display:flex;align-items:center;justify-content:center}
+
+/* Canvas bgs */
+.bg-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+
+/* Intro */
+#intro{color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 1rem}
+.intro-inner{position:relative;z-index:5;max-width:900px}
+.cinematic-text .line{font-family:"Playfair Display";font-size:clamp(1.6rem,3vw,2.6rem);opacity:0;margin:0 0 0.6rem}
+#start-btn{margin-top:1.5rem;padding:0.9rem 1.6rem;border-radius:999px;border:none;background:linear-gradient(90deg,var(--accent),var(--gold));color:white;font-weight:600;cursor:pointer;box-shadow:0 12px 30px rgba(231,84,128,0.18)}
+.icon-btn{background:transparent;border:1px solid rgba(255,255,255,0.12);color:white;padding:0.6rem;border-radius:8px;margin-left:0.75rem}
+
+/* Section titles */
+.section-title{font-family:"Playfair Display";font-weight:600;color:var(--gold);font-size:1.6rem;margin:0 0 1.4rem;text-align:center}
+
+/* Gallery */
+.gallery{display:flex;gap:1rem;overflow:auto;padding:1rem 1rem;scroll-snap-type:x mandatory}
+.gallery-item{min-width:260px;flex:0 0 auto;border-radius:12px;background:var(--glass);backdrop-filter: blur(var(--glass-blur));padding:0.5rem;scroll-snap-align:center;position:relative;cursor:pointer;transition:transform 0.45s cubic-bezier(.2,.9,.3,1)}
+.gallery-item img{width:100%;height:180px;object-fit:cover;border-radius:8px;display:block}
+.gallery-item figcaption{margin-top:0.6rem;color:var(--muted);font-size:0.95rem;opacity:0.95}
+.gallery-item:hover{transform:translateY(-8px)}
+
+
+/* Floating stage & hearts */
+.float-stage{position:relative;height:260px;border-radius:16px;background:linear-gradient(180deg, rgba(255,245,249,0.06), rgba(255,240,245,0.02));box-shadow:0 8px 40px rgba(0,0,0,0.35);overflow:hidden}
+.hearts-grid{display:flex;gap:1rem;justify-content:center;padding:1.2rem}
+.heart{font-size:1.6rem;padding:0.6rem 0.9rem;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent-2),var(--accent));color:white;cursor:pointer;box-shadow:0 8px 30px rgba(231,84,128,0.12)}
+
+/* Quote popup */
+.quote-popup{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(0.98);background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));padding:1.2rem 1.4rem;border-radius:14px;backdrop-filter: blur(6px);box-shadow:0 18px 40px rgba(11,7,16,0.6);max-width:520px;z-index:120;display:none}
+.quote-popup p{font-family:"Playfair Display";font-size:1.2rem;margin:0;color:var(--text)}
+.quote-popup .close{position:absolute;right:8px;top:8px;border:none;background:transparent;font-size:1rem;cursor:pointer}
+
+/* Three container */
+.three-container{height:420px;border-radius:14px;background:linear-gradient(180deg, rgba(255,240,245,0.04), rgba(255,245,250,0.02));box-shadow:0 18px 60px rgba(0,0,0,0.5);overflow:hidden}
+.instructions{text-align:center;color:var(--muted);margin-top:0.75rem}
+
+/* Gift */
+.gift-area{display:flex;justify-content:center;padding:2rem}
+.gift-box{width:160px;height:160px;background:linear-gradient(180deg,#ffe8ef,#ffdbea);border-radius:12px;position:relative;box-shadow:0 40px 80px rgba(0,0,0,0.45);cursor:pointer;transition:transform 0.6s}
+.gift-box::after{content:"";position:absolute;inset:0;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));pointer-events:none}
+.surprise-text{display:none;text-align:center;margin-top:1rem}
+.surprise-text h1{font-family:"Playfair Display";font-size:2.4rem;color:var(--accent)}
+
+/* Finale */
+.finale-inner{position:relative;z-index:8;color:white;text-align:center;padding:3rem}
+.final-msg{font-family:"Playfair Display";font-size:1.6rem;max-width:900px;margin:0 auto}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(7,5,10,0.78);
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:1rem;
+  padding:2rem;
+  z-index:200;
+  display:none;
+}
+.lightbox img{max-width:90%;max-height:70vh;border-radius:12px}
+.lightbox .close{position:absolute;right:18px;top:18px;border:none;background:transparent;color:white;font-size:1.4rem}
+
+/* Buttons */
+.btn{background:linear-gradient(90deg,var(--accent),var(--gold));border:none;padding:0.9rem 1.4rem;color:white;border-radius:999px;cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:white}
+.icon-btn{font-size:1rem}
+
+/* Footer */
+.site-foot{padding:2rem;text-align:center;color:#a99fb3}
+
+/* Responsive */
+@media (max-width:720px){
+  .gallery-item img{height:150px}
+  .three-container{height:320px}
+  .cinematic-text .line{font-size:1.6rem}
+}
+.confetti{
+  position:fixed;
+  width:8px;
+  height:12px;
+  border-radius:2px;
+  pointer-events:none;
+}
